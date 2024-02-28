@@ -28,5 +28,13 @@ def appointment(request):
     
     return render(request, "appointment.html")
 
+def terms(request):
+    
+    return render(request, "terms.html")
+
+def privacy(request):
+    
+    return render(request, "privacy.html")
+
 
 # Create your views here.
