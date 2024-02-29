@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Doctors
 
 def index(request):
     
@@ -22,7 +23,13 @@ def about(request):
 
 def doctor(request):
     
-    return render(request, "doctor.html")
+    doctor = Doctors.objects.all().order_by('?')[:4]
+    context = {
+        'doctor' : doctor , 
+        "nav" : 'doctor',
+         }
+    
+    return render(request, "doctor.html", context )
 
 def appointment(request):
     
