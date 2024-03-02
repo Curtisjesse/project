@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 
 class Socialmedia(models.Model):
-    facebooklink = models.URLField(blank=True, null=True)
-    twitterlink = models.URLField(blank=True, null=True)
-    instagramlink = models.URLField(blank=True, null=True)
+    facebook_link = models.URLField(blank=True, null=True)
+    twitter_link = models.URLField(blank=True, null=True)
+    instagram_link = models.URLField(blank=True, null=True)
     
     
 class Doctors(models.Model):

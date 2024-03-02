@@ -43,5 +43,13 @@ def privacy(request):
     
     return render(request, "privacy.html")
 
+def login(request):
+    
+    return render(request, "login.html")
+
+def signup(request):
+    
+    return render(request, "signup.html")
+
 
 # Create your views here.
