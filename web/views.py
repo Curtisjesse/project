@@ -47,9 +47,9 @@ def login(request):
     
     return render(request, "login.html")
 
-def signup(request):
+def register(request):
     
-    return render(request, "signup.html")
+    return render(request, "register.html", {'nav':'register'})
 
 
 # Create your views here.
