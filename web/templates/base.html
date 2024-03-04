@@ -50,7 +50,7 @@
           <li class="nav-item"><a class="nav-link" href="{% url 'web:doctor' %}">Doctor</a></li>
           <li class="nav-item"> <a class="nav-link" href="{% url 'web:departments' %}">Departments</a> </li>
           <li class="nav-item"><a class="nav-link" href="{% url 'web:blog' %}">Blog</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'web:contact' %}">Contact us</a>  </li>
+          <!-- <li class="nav-item"> <a class="nav-link" href="{% url 'web:contact' %}">Contact us</a>  </li> -->
           <li class="nav-item"><a class="nav-link" href="#"><img src="{%static 'images/search-icon.png' %}" /></a></li>
           <li class="nav-item {% if nav == 'contact' %} active {% endif %}"><a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a></li>
           {% else %}
