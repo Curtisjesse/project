@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Doctors , Departments
+from .models import Doctors , Departments , Blog
 
 def index(request):
     
@@ -7,7 +7,13 @@ def index(request):
 
 def blog(request):
     
-    return render(request, "blog.html")
+    blog = Blog.objects.all().order_by('?')[:3]
+    context = {
+        'blog' : blog , 
+        "nav" : 'blog',
+         }
+     
+    return render(request, "blog.html",context)
 
 def contact(request):
     
