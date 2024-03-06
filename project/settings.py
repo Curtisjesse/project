@@ -71,7 +71,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL =  '/'
+LOGIN_URL = 'accounts:sign_in'
+LOGOUT_REDIRECT_URL = 'accounts:sign_in'
 
 
 # Database

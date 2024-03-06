@@ -1,148 +1,100 @@
-{% extends 'base1.html' %} {% load static %} {% block content1 %}
+{% extends 'base.html' %}
+{% load static %}
+{% block header %}
+<link rel="stylesheet" href="{% static 'css/bootstrapappoint.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/datepickerappoint.css' %}">
+<link rel="stylesheet" href="{% static 'css/styleappoint.css' %}">
 
-<div class="container content">
-  <div class="row" style="margin-bottom: 30px">
-    <div class="col-md-9" style="margin-bottom: 30px">
-      <div class="headline"><h2>Appointment Form</h2></div>
+{% include 'common/header1.html' %}
 
-      <!--=== APPOINTMENT FORM ===-->
-      <form
-        onsubmit="showMsg(0);return false;"
-        method="post"
-        class="sky-form sky-changes-3"
-      >
-        <fieldset>
-          <div class="row">
-            <section class="col col-6">
-              <label class="label">Name</label>
-              <label class="input">
-                <i class="icon-append fa fa-user"></i>
-                <input type="text" name="name" id="name" required="" />
-              </label>
-            </section>
-            <section class="col col-6">
-              <label class="label">E-mail</label>
-              <label class="input">
-                <i class="icon-append fa fa-envelope-o"></i>
-                <input type="email" name="email" id="email" required="" />
-              </label>
-            </section>
-          </div>
+{% endblock %}
+{% block content %}
 
-          <section>
-            <label class="label">Purpose Of Appointment</label>
-            <label class="input">
-              <i class="icon-append fa fa-tag"></i>
-              <input type="text" name="subject" required="" />
-            </label>
-          </section>
 
-          <section>
-            <label class="label">Mobile Number</label>
-            <label class="input">
-              <i class="icon-append fa fa-phone"></i>
-              <input type="text" name="number" id="number" required="" />
-            </label>
-          </section>
 
-          <section>
-			<label class="select">
-			  <select name="Department" required="">
-				<option value="" selected="" disabled="">
-				  Select Department
-				</option>
-				<option>Cardiology</option>
-				<option>Dermatology and Cosmetology</option>
-				<option>General Surgery</option>
-				<option>Health Checkup Packages</option>
-				<option>Neurology</option>
-			  </select>
-			  <i></i>
-			</label>
-		  </section>
-		  <div class="row">
-			<section class="col col-6">
-			  <label class="date">Select Date</label>
-			  <label class="input">
-				<i class="icon-append fa fa-calendar"></i>
-				<input type="date" required="" />
-			  </label>
-			</section>
-			<section class="col col-6">
-			  <label class="time">Select Time</label>
-			  <label class="select">
-				<select name="Time" required="">
-				  <option value="" selected="" disabled="">
-					Select Time
-				  </option>
-				  <option>8 AM - 10 AM</option>
-				  <option>10 AM - 12 PM</option>
-				  <option>12 PM - 2 PM</option>
-				  <option>2 PM - 4 PM</option>
-				  <option>4 PM - 6 PM</option>
-				  <option>6 PM - 8 PM</option>
-				  <option>8 PM - 10 PM</option>
-				</select>
-				<i></i>
-			  </label>
-			</section>
-          </div>
-          <div class="alert alert-success successBox">
-            <button type="button" class="close" onclick="showMsg(1);">×</button>
-            <strong style="font-size: 16px">Congratulations!</strong
-            ><span class="alert-link">
-              Your Appointment has been booked successfully.</span
-            >
-          </div>
-        </fieldset>
 
-        <footer>
-          <button type="submit" class="btn-u">Send message</button>
-        </footer>
-      </form>
-    </div>
-    <!--/col-md-9-->
 
-    <!-- side part of appointment -->
-    <div class="col-md-3" style="margin-top: 56px">
-      <!-- Address -->
-      <div class="headline"><h2>Appointment Notes</h2></div>
-      <p>
-        You Only Can Book Your Appointment Between
-        <strong>8 AM to 10 PM.</strong>
-      </p>
-      <p>In Other Times You Can Call Our Ambulance Which Is Available 24/7.</p>
-
-      <!-- Business Hours -->
-      <div class="headline" style="margin-top: 20px">
-        <h2>Business Hours</h2>
+<div class="inner-layer">
+  <img>
+  <div class="container">
+    <div class="row no-margin">
+      <div class="col-sm-7">
+        <div class="content">
+          <h1>Book You Slot Now and Save your time</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis at lacus at rhoncus. Integer
+            pharetra lacus vitae sapien blandit eleifend. </p>
+          <h2>For Help Call : +189-123-453</h2>
+        </div>
       </div>
-      <ul class="list-unstyled" style="margin-bottom: 30px">
-        <li><strong>Monday-Saturday:</strong> 24/7 Available.</li>
-        <li><strong>Sunday:</strong> 4 AM to 11 PM.</li>
-      </ul>
+      <div class="col-sm-5">
+        <form action="" method="post">
+          {% csrf_token %}
+          <div class="form-data">
+            <div class="form-head">
+              <h2>Book Appointemnt</h2>
+            </div>
+            <div class="form-body">
+              <div class="row form-row">
+                <input type="text" placeholder="Enter Full name" class="form-control">
+              </div>
+              <div class="row form-row">
+                <input type="text" placeholder="Enter Mobile Number" class="form-control">
+              </div>
+              <div class="row form-row">
+                <input type="text" placeholder="Enter Email Adreess" class="form-control">
+              </div>
+              <div class="row form-row">
+                <input id="dat" type="text" placeholder="Appointment Date" class="form-control">
+              </div>
 
-      <!-- Why choose us? -->
-      <div class="headline"><h2>Why Choose Us?</h2></div>
-      <p>
-        All healthcare facilities can be accessed here under one roof, making
-        UNITY Hospital a one point contact for all your healthcare needs.
-      </p>
-      <ul class="list-unstyled">
-        <li><i class="fa fa-check color-green"></i> 24/7 Ambulance Support.</li>
-        <li>
-          <i class="fa fa-check color-green"></i> Eminent and Experienced
-          Doctors.
-        </li>
-        <li>
-          <i class="fa fa-check color-green"></i> Multiple Options For
-          Treatment.
-        </li>
-      </ul>
+              <h6>Address Details</h6>
+
+              <div class="row form-row">
+                <div class="col-sm-6">
+                  <input type="text" placeholder="Enter Area" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" placeholder="Enter City" class="form-control">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-6">
+                  <input type="text" placeholder="Enter State" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" placeholder="Postal Code" class="form-control">
+                </div>
+              </div>
+
+              <div class="row form-row">
+                <button class="btn btn-success btn-appointment" type="submit">
+                  Book Appointment
+                </button>
+
+              </div>
+
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-    <!--/col-md-3-->
   </div>
-  <!--/row-->
 </div>
-<!--/container-->
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{% static 'js/jqueryappoint-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/popperappoint.min.js' %}"></script>
+<script src="{% static 'js/bootstrapappoint.min.js' %}"></script>
+<script src="{% static 'js/bootstrapappoint-datepicker.js' %}"></script>
+
+<script>
+  $(document).ready(function () {
+    $("#dat").datepicker();
+  })
+</script>
+
+
+
 {% endblock %}
