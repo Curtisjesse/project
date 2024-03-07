@@ -65,6 +65,10 @@ def login(request):
     
     return render(request, "login.html")
 
+def medicine(request):
+    
+    return render(request, "medicine.html")
+
 def register(request):
     
     return render(request, "register.html", {'nav':'register'})
