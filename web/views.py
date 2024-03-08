@@ -1,10 +1,15 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Doctors , Departments , Blog , Medicine
+from .models import Doctors , Departments , Blog , Medicine, Testimonials
 
 def index(request):
     
-    return render(request, "index.html")
+    testimonials = Testimonials.objects.all()
+    context = {
+        
+        'testimonials': testimonials }
+    
+    return render(request, "index.html", context)
 
 @login_required
 def blog(request):
@@ -53,10 +58,12 @@ def appointment(request):
     user_name = request.user.username
     return render(request, "appointment.html")
 
+@login_required
 def terms(request):
     
     return render(request, "terms.html")
 
+@login_required
 def privacy(request):
     
     return render(request, "privacy.html")
