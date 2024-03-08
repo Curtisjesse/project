@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Doctors , Departments , Blog
+from .models import Doctors , Departments , Blog , Medicine
 
 def index(request):
     
@@ -64,10 +64,15 @@ def privacy(request):
 def login(request):
     
     return render(request, "login.html")
-
+@login_required
 def medicine(request):
     
-    return render(request, "medicine.html")
+    medicine = Medicine.objects.all().order_by('?')[:3]
+    context = {
+        'medicine' : medicine , 
+        "nav" : 'medicine',
+         }
+    return render(request, "medicine.html", context)
 
 def register(request):
     
