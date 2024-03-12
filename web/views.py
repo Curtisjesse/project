@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Doctors , Departments , Blog , Medicine, Testimonials
+from .models import Doctors , Departments , Blog , Medicine, Testimonials,Contact_info
 
 def index(request):
     
@@ -22,9 +22,13 @@ def blog(request):
      
     return render(request, "blog.html",context)
 
-def contact(request):
-    
-    return render(request, "contact.html")
+def contact_info(request):
+    contact_info = Contact_info.objects.all()
+    context = {
+        'contact_info' : contact_info,
+        'nav':'contact_info',
+        }
+    return render(request, "contact_info.html",context)
 
 @login_required
 def departments(request):
