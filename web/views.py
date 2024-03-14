@@ -55,12 +55,13 @@ def doctor(request):
         "nav" : 'doctor',
          }
     
-    return render(request, "doctor.html", context )
+    return render(request, "doctor.html", context ) 
 
 @login_required
 def appointment(request):
     user_name = request.user.username
-    return render(request, "appointment.html")
+    doctors = Doctors.objects.all() 
+    return render(request, "appointment.html", {"doctors": doctors})
 
 @login_required
 def terms(request):
@@ -75,6 +76,11 @@ def privacy(request):
 def login(request):
     
     return render(request, "login.html")
+
+def notification(request):
+    
+    return render(request, "notification.html")
+
 @login_required
 def medicine(request):
     

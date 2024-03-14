@@ -43,6 +43,15 @@
                 <input type="text" placeholder="Enter Email Adreess" class="form-control">
               </div>
               <div class="row form-row">
+                <select id="doctor-dropdown" class="form-control">
+                  <option value="">Select Doctor</option>
+                  {% for doctor in doctors %}
+                    <option value="{{ doctor.id }}">{{ doctor.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              
+              <div class="row form-row">
                 <input id="dat" type="text" placeholder="Appointment Date" class="form-control">
               </div>
 
