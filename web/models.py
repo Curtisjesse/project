@@ -46,7 +46,7 @@ class Medicine(models.Model):
     
 class Testimonials(models.Model):
         name = models.CharField(max_length=100)
-        description = models.TextField(max_length=250, blank=False)
+        description = models.TextField(max_length=1000, blank=False)
         img = models.ImageField(upload_to='Testimonials')
         
         def __str__(self):
