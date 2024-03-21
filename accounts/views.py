@@ -9,7 +9,9 @@ def register(request):
     if request.method == 'POST':
             
         
-        username = request.POST['user_name']
+        fullname = request.POST['Full_name']
+        username = request.POST['username']
+        phone = request.POST['phone']
         email = request.POST['email']
         password1 = request.POST['password']
         password2 = request.POST['confirm_password']
@@ -17,7 +19,14 @@ def register(request):
         if password1 != password2:
             return messages(request, "password didn't match")
         
-        user = User.objects.create_user(username=username, password=password1, email=email)
+        user = User.objects.create_user(
+            username=username,
+            email=email,
+            password=password1,
+            # Any additional fields can be set here
+            first_name=fullname.split()[0],
+            last_name=fullname.split()[1] if len(fullname.split()) > 1 else ''
+        )
         user.save()
         print('user created')
         return redirect('/')

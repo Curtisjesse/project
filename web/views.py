@@ -49,13 +49,17 @@ def about(request):
 @login_required
 def doctor(request):
     
-    doctor = Doctors.objects.all().order_by('?')[:4]
+    doctor = Doctors.objects.all().order_by('?')
     context = {
         'doctor' : doctor , 
         "nav" : 'doctor',
          }
     
-    return render(request, "doctor.html", context ) 
+    return render(request, "doctor.html", context )
+ 
+def book_doctor(request, doctor_id):
+    doctor = Doctor.objects.get(id=doctor_id)
+    return redirect('booking_success')
 
 @login_required
 def appointment(request):
@@ -94,6 +98,12 @@ def medicine(request):
 def register(request):
     
     return render(request, "register.html", {'nav':'register'})
+from django.shortcuts import render, redirect
+
+def book_doctor(request, doctor_id):
+    doctor = Doctor.objects.get(id=doctor_id)
+    return redirect('booking_success')
+
 
 
 # Create your views here.

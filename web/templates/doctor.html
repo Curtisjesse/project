@@ -1,8 +1,9 @@
-{% extends 'base1.html' %} {% load static %}
+{% extends 'base1.html' %} 
+{% load static %}
 {% block header %}
   {% include 'common/header1.html'   %}
 {% endblock %}
- {% block content1 %}
+{% block content1 %}
 
 <!--=== Team v1 ===-->
 
@@ -11,7 +12,7 @@
     {% for doctor in doctor %}
     <li class="col-sm-3 col-xs-6" style="margin-bottom: 30px">
       <div class="team-img">
-        <img class="img-responsive" src="{{doctor.img.url}}" alt="" />
+        <img class="img-responsive" src="{{ doctor.img.url }}" alt="" />
         <ul>
           <li>
             <a href="https://www.twitter.com"
@@ -30,14 +31,14 @@
           </li>
         </ul>
       </div>
-      <h3>{{doctor.name}}</h3>
-      <h4>{{doctor.description}}</h4>
-      <p>{{doctor.specialize}}</p>
+      <h3>{{ doctor.name }}</h3>
+      <h4>{{ doctor.description }}</h4>
+      <p>{{ doctor.specialize }}</p>
+      <a href="{% url 'booking' doctor.id %}" class="btn btn-primary">Book Now</a>
     </li>
     {% endfor %}
   </ul>
 </div>
-
 
 <!-- doctor section end -->
 <!-- footer section start -->
