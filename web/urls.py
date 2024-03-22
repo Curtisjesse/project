@@ -19,6 +19,7 @@ urlpatterns = [
     path('medicine/', views.medicine, name='medicine'),
     #path('signup/', views.signup, name='signup'),
     path('register/', views.register, name='register'),
+    path('booking/<str:doctor_id>/', views.book_doctor, name='booking'),
     
     
 ]

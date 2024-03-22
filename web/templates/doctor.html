@@ -34,7 +34,7 @@
       <h3>{{ doctor.name }}</h3>
       <h4>{{ doctor.description }}</h4>
       <p>{{ doctor.specialize }}</p>
-      <a href="{% url 'booking' doctor.id %}" class="btn btn-primary">Book Now</a>
+      <a href="{% url 'web:booking' doctor_id=doctor.id %}" class="btn btn-primary">Book Now</a>
     </li>
     {% endfor %}
   </ul>

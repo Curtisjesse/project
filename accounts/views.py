@@ -1,37 +1,31 @@
 from django.shortcuts import render, redirect
 # from django.contrib.auth.models import User, auth\
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
+from accounts.forms import UserSignUpForm
+from django.contrib.auth import authenticate, login, logout
+from accounts.models import CustomUser,Doctor,Patient
+from django.views.generic import CreateView
 
-def register(request):
-    
+def signup_view(request):
     if request.method == 'POST':
-            
-        
-        fullname = request.POST['Full_name']
-        username = request.POST['username']
-        phone = request.POST['phone']
-        email = request.POST['email']
-        password1 = request.POST['password']
-        password2 = request.POST['confirm_password']
-        
-        if password1 != password2:
-            return messages(request, "password didn't match")
-        
-        user = User.objects.create_user(
-            username=username,
-            email=email,
-            password=password1,
-            # Any additional fields can be set here
-            first_name=fullname.split()[0],
-            last_name=fullname.split()[1] if len(fullname.split()) > 1 else ''
-        )
-        user.save()
-        print('user created')
-        return redirect('/')
-    else: 
-         return render(request, 'sign_up.html')
+        form = UserSignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.role = "Patient"
+            user.save()
+            print('dfbghjklfhgjkl')
+            patient = Patient(user=user)
+            patient.save()
+            # send_activation_email(user, request)
+            return redirect('/')
+    else:
+        form = UserSignUpForm()
+
+    context = {
+        'form': form,
+    }
+    
+    return render(request, 'sign_up.html', context)
 
 def sign_in(request):
     
@@ -60,3 +54,8 @@ def sign_in(request):
             
     return render(request, 'sign_up.html')
 # Create your views here.
+def custom_logout(request):
+    logout(request)
+    return redirect('accounts:sign_in')  # Assuming 'login' is the name of your login view
+
+   

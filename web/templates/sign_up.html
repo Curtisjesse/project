@@ -4,10 +4,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
+    <!-- <link
       rel="stylesheet"
       href="{%static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' %}"
-    />
+    /> -->
     <link rel="stylesheet" href="{%static 'css/style4.css' %}" />
     <title>Modern Login Page | AsmrProg</title>
   </head>
@@ -18,23 +18,18 @@
         <form method="post" action="{% url 'accounts:register' %}">
             {% csrf_token %}
           <h1>Create Account</h1>
-          <div class="social-icons">
-            <a href="#" class="icon"
-              ><i class="fa-brands fa-google-plus-g"></i
-            ></a>
-            <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-            <a href="#" class="icon"
-              ><i class="fa-brands fa-linkedin-in"></i
-            ></a>
-          </div>
-          <span>or use your email for registeration</span>
-          <input type="text" placeholder="Full name" name="Full_name"/>
+          <!-- {{ form.as_p }} -->
+          <select name="gender" id="">
+            <option value="Male">male</option>
+            <option value="Female">female</option>
+            <option value="Other">other</option>
+          </select>
+          <input type="text" placeholder="Full name" name="full_name"/>
           <input type="text" placeholder="username" name="username"/>
           <input type="tel" placeholder="phone number" name="phone"/>
           <input type="email" placeholder="Email" name="email" />
-          <input type="password" placeholder="Password" name="password" />
-          <input type="password" placeholder="confirm_Password" name="confirm_password" />
+          <input type="password" placeholder="Password" name="password1" />
+          <input type="password" placeholder="confirm_Password" name="password2" />
           <button>Sign Up</button>
         </form>
       </div>

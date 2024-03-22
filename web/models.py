@@ -1,11 +1,10 @@
 from django.db import models
+from accounts.models import Doctor, Patient
+
 
 # Create your models here.
 
-class Socialmedia(models.Model):
-    facebook_link = models.URLField(blank=True, null=True)
-    twitter_link = models.URLField(blank=True, null=True)
-    instagram_link = models.URLField(blank=True, null=True)
+
     
     
 class Doctors(models.Model):
@@ -13,13 +12,20 @@ class Doctors(models.Model):
     description = models.TextField()
     specialized = models.TextField()
     img = models.ImageField(upload_to = 'images')
-    Socialmedia = models.ForeignKey(Socialmedia,related_name='socialmedia',on_delete=models.SET_NULL,null=True,blank=True)
+    # Socialmedia = models.ForeignKey(Socialmedia,related_name='socialmedia',on_delete=models.SET_NULL,null=True,blank=True)
     
     
     def __str__(self):
         return self.name
 
-
+class Booking_Detail(models.Model):
+    doctor = models.ForeignKey(Doctor, related_name='Doctor', on_delete=models.SET_NULL, null=True, blank=True)
+    patient = models.ForeignKey(Patient, related_name='Patient', on_delete=models.CASCADE)
+    booked_on = models.DateTimeField()
+    date_booked = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"{self.doctor.user.username} with {self.patient.user.username}"
 
 class Departments(models.Model):
     title = models.CharField(max_length=100)

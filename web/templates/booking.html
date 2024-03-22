@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header %}
+  {% include 'common/header1.html'   %}
+{% endblock %}
+{% block content %}
+  <h1>Booking Confirmation</h1>
+  <p>Thank you for booking with us!</p>
+  <p>Your booking details:</p>
+  <p>Doctor: {{ doctor.name }}</p>
+  <p>Date: {{ date }}</p>
+  <p>Time: {{ time }}</p>
+  <p>Location: {{ location }}</p>
+{% endblock %}

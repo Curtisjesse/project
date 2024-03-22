@@ -56,10 +56,18 @@ def doctor(request):
          }
     
     return render(request, "doctor.html", context )
- 
+
+@login_required
 def book_doctor(request, doctor_id):
-    doctor = Doctor.objects.get(id=doctor_id)
-    return redirect('booking_success')
+    doctor = Doctors.objects.get(id=doctor_id)
+    # doctor_id = request.GET.get('doctor_id')
+    context = {
+        'doctor': doctor,
+        'date': '2024-03-22',  # Example date value
+        'time': '10:00 AM',    # Example time value
+        'location': 'Example Medical Center',
+         }
+    return render(request,'booking.html',context)
 
 @login_required
 def appointment(request):
@@ -100,9 +108,7 @@ def register(request):
     return render(request, "register.html", {'nav':'register'})
 from django.shortcuts import render, redirect
 
-def book_doctor(request, doctor_id):
-    doctor = Doctor.objects.get(id=doctor_id)
-    return redirect('booking_success')
+
 
 
 
